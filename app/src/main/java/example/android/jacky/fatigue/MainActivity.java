@@ -29,6 +29,9 @@ public class MainActivity extends FragmentActivity implements
     private Runnable energyLevelRunnable;
     private DialogFragment energyLevelFrag;
 
+    // default to 1 minute
+    private int energyDelay = 60000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +102,7 @@ public class MainActivity extends FragmentActivity implements
             }
         };
 
-        handler.postDelayed(energyLevelRunnable,3000);
+        handler.postDelayed(energyLevelRunnable,energyDelay);
     }
 
     @Override
@@ -109,6 +112,7 @@ public class MainActivity extends FragmentActivity implements
                 Toast.makeText(this, "User authenticated", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "User authentication failed", Toast.LENGTH_SHORT).show();
+                LifeLog.doLogin(MainActivity.this);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -148,6 +152,10 @@ public class MainActivity extends FragmentActivity implements
 //        if (handler != null) {
 //            displayEnergyLevelDialog();
 //        }
+    }
+
+    public void setEnergyDelay(int delay){
+        energyDelay = delay;
     }
 
 

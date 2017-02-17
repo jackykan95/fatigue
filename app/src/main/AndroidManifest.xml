@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ActivitiesDaily"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ActivitiesWeekly"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".EnergyLevel" />
+        <activity android:name=".MentalFatigue"></activity>
     </application>
 
 </manifest>

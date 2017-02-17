@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fatigue</string>
+    <string name="daily_activities">Daily Activities Summary</string>
+    <string name="weekly_activities">Weekly Activities Summary</string>
+    <string name="energy_level">Energy Level Summary</string>
+    <string name="mental_fatigue">Mental Fatigue Summary</string>
 </resources>

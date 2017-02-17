@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_energy_summary"
+        android:layout_marginTop="30dp"
+        android:background="@color/textViewColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_energy_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/energy_level"
+        android:background="@color/buttonColor"
+        style="@style/Widget.AppCompat.Button.Borderless" />
+
+    <TextView
+        android:id="@+id/txt_fatigue_summary"
+        android:background="@color/textViewColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_fatigue_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mental_fatigue"
+        android:background="@color/buttonColor"
+        style="@style/Widget.AppCompat.Button.Borderless" />
+
 
 </LinearLayout>
