@@ -4,4 +4,11 @@
     <string name="weekly_activities">Weekly Activities Summary</string>
     <string name="energy_level">Energy Level Summary</string>
     <string name="mental_fatigue">Mental Fatigue Summary</string>
+    <string name="energetic">I feel energetic</string>
+    <string name="tired">I feel so tired I have to rest</string>
+    <string name="concentrate_two_tasks">I feel able to concentrate on two tasks at a time</string>
+    <string name="concentrate_one_task">I am unable to concentrate on one simple task</string>
+    <string name="motivated">I am feel able and motivated</string>
+    <string name="required_effort">I feel that everything is too much effort</string>
+    <string name="web_client_id">206690258788-rnth3bpuiap1kanbvkek9f3kerkk3i7e.apps.googleusercontent.com</string>
 </resources>

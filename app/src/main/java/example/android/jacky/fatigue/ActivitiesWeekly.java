@@ -17,6 +17,7 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.sonymobile.lifelog.LifeLog;
 import com.sonymobile.lifelog.utils.Debug;
 import com.sonymobile.lifelog.utils.VolleySingleton;
@@ -45,7 +46,8 @@ public class ActivitiesWeekly extends AppCompatActivity {
         mChart = (PieChart) findViewById(R.id.chart1);
 
         mChart.setEntryLabelColor(Color.BLACK);
-        mChart.setEntryLabelTextSize(18f);
+        mChart.setEntryLabelTextSize(13f);
+        mChart.setUsePercentValues(true);
 
         mChart.getDescription().setEnabled(false);
         mChart.setCenterText("Activities Summary");
@@ -164,8 +166,9 @@ public class ActivitiesWeekly extends AppCompatActivity {
 
                                 PieDataSet set = new PieDataSet(entries, "Activities");
                                 set.setColors(new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.CYAN, Color.GRAY});
-                                set.setSliceSpace(2f);
+                                set.setSliceSpace(5f);
                                 PieData data = new PieData(set);
+                                data.setValueFormatter(new PercentFormatter());
                                 data.setValueTextColor(Color.BLACK);
                                 data.setValueTextSize(18f);
 

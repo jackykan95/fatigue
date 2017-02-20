@@ -6,14 +6,14 @@
 
     <TextView
         android:id="@+id/txt_energy_level"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:background="@color/textViewColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <NumberPicker
         android:id="@+id/energy_level_frequency_picker"
-        android:theme="Theme_Holo_Light"
+        android:theme="@style/pickerHoloLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -25,9 +25,15 @@
 
     <NumberPicker
         android:id="@+id/mental_fatigue_frequency_picker"
-        android:theme="Theme_Holo_Light"
+        android:theme="@style/pickerHoloLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:text="Apply Changes"
+        android:layout_marginTop="5dp"
+        android:id="@+id/apply_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

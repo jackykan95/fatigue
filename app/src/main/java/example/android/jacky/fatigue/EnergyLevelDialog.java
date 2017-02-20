@@ -57,8 +57,6 @@ public class EnergyLevelDialog extends DialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.setTitle("Energy Level");
 
-
-
         return dialog;
     }
 

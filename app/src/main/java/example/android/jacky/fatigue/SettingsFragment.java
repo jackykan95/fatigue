@@ -5,8 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Jacky on 11/01/2017.
@@ -15,6 +18,10 @@ import android.widget.TextView;
 public class SettingsFragment extends Fragment {
 
     private NumberPicker energyPicker, fatiguePicker;
+
+    private Button applyButton;
+
+    private FirebaseDatabase database;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,6 +32,10 @@ public class SettingsFragment extends Fragment {
         TextView txtEnergy = (TextView) rootView.findViewById(R.id.txt_energy_level);
 
         TextView txtFatigue = (TextView) rootView.findViewById(R.id.txt_mental_fatigue);
+
+        applyButton = (Button) rootView.findViewById(R.id.apply_button);
+
+        applyButton.setEnabled(false);
 
         txtEnergy.setText("Change the frequency of the energy level prompt appearing (minutes):");
 
@@ -39,8 +50,7 @@ public class SettingsFragment extends Fragment {
         energyPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                MainActivity activity = (MainActivity) getActivity();
-                activity.setEnergyDelay(newVal);
+            applyButton.setEnabled(true);
             }
         });
 
@@ -53,9 +63,20 @@ public class SettingsFragment extends Fragment {
         fatiguePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-
+                applyButton.setEnabled(true);
             }
         });
+
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.setEnergyDelay(energyPicker.getValue()*60000);
+                activity.setFatigueDelay(fatiguePicker.getValue()*60000);
+            }
+        });
+
+        database = FirebaseDatabase.getInstance();
 
 
         return rootView;

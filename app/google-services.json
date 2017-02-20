@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "206690258788",
+    "firebase_url": "https://finalyearproject-36419.firebaseio.com",
+    "project_id": "finalyearproject-36419",
+    "storage_bucket": "finalyearproject-36419.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206690258788:android:d014f14f297a2831",
+        "android_client_info": {
+          "package_name": "example.android.jacky.fatigue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206690258788-cqke90h6nev2ajb2gc2qqa6btn3b8nr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "example.android.jacky.fatigue",
+            "certificate_hash": "5775B98941D30A0FBA7181488A35D1EEBB33EC73"
+          }
+        },
+        {
+          "client_id": "206690258788-rnth3bpuiap1kanbvkek9f3kerkk3i7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8GBSEXn_jiOKauMWqcvfhn_7bmEuBY_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206690258788-rnth3bpuiap1kanbvkek9f3kerkk3i7e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

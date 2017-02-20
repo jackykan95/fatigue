@@ -12,6 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.sonymobile.lifelog.LifeLog;
 
 import Adapter.TabsPagerAdapter;
@@ -26,11 +28,13 @@ public class MainActivity extends FragmentActivity implements
     private String[] tabs = { "Settings", "Activities", "Fatigue"};
 
     private Handler handler;
-    private Runnable energyLevelRunnable;
-    private DialogFragment energyLevelFrag;
+    private Runnable energyLevelRunnable, fatigueRunnable;
+    private DialogFragment energyLevelFrag, fatigueFrag;
 
     // default to 1 minute
-    private int energyDelay = 60000;
+    private int energyDelay = 60000 , fatigueDelay = 60000;
+
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,11 +102,34 @@ public class MainActivity extends FragmentActivity implements
                     }
                 }
 
-//                handler.postDelayed(this,2000);
             }
         };
 
         handler.postDelayed(energyLevelRunnable,energyDelay);
+    }
+
+    public void displayFatigueDialog(){
+
+        fatigueRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+
+                if (fatigueFrag == null) {
+                    fatigueFrag = FatigueDialog.newInstance();
+                } else {
+                    if (fatigueFrag.getDialog() == null) {
+                        fatigueFrag = FatigueDialog.newInstance();
+                        fatigueFrag.setCancelable(false);
+                        fatigueFrag.show(getSupportFragmentManager(), "dialog");
+                    }
+                }
+
+            }
+        };
+
+        handler.postDelayed(fatigueRunnable,fatigueDelay);
+
     }
 
     @Override
@@ -118,7 +145,10 @@ public class MainActivity extends FragmentActivity implements
             super.onActivityResult(requestCode, resultCode, data);
         }
 
-        //displayEnergyLevelDialog();
+
+
+        displayEnergyLevelDialog();
+        displayFatigueDialog();
     }
 
     @Override
@@ -141,21 +171,36 @@ public class MainActivity extends FragmentActivity implements
     @Override
     public void onPause(){
         super.onPause();
-//        if (handler != null) {
-//            handler.removeCallbacks(energyLevelRunnable);
-//        }
+        if (handler != null) {
+            handler.removeCallbacks(energyLevelRunnable);
+            handler.removeCallbacks(fatigueRunnable);
+        }
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if (handler != null) {
+            handler.removeCallbacks(energyLevelRunnable);
+            handler.removeCallbacks(fatigueRunnable);
+        }
     }
 
     @Override
     public void onResume(){
         super.onResume();
-//        if (handler != null) {
-//            displayEnergyLevelDialog();
-//        }
+        if (handler != null) {
+            displayEnergyLevelDialog();
+            displayFatigueDialog();
+        }
     }
 
     public void setEnergyDelay(int delay){
         energyDelay = delay;
+    }
+
+    public void setFatigueDelay(int delay){
+        fatigueDelay = delay;
     }
 
 
