@@ -24,9 +24,19 @@
         <activity
             android:name=".ActivitiesWeekly"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".EnergyLevel" />
-        <activity android:name=".MentalFatigue" />
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".EnergyLevelDaily"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".MentalFatigueDaily"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".EnergyLevelWeekly"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".MentalFatigueWeekly"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

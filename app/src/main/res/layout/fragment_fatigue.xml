@@ -5,31 +5,59 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/txt_energy_summary"
+        android:id="@+id/txt_daily_energy_summary"
         android:layout_marginTop="30dp"
         android:background="@color/textViewColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_energy_summary"
+        android:id="@+id/btn_daily_energy_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/energy_level"
+        android:text="@string/daily_energy_level"
         android:background="@color/buttonColor"
         style="@style/Widget.AppCompat.Button.Borderless" />
 
     <TextView
-        android:id="@+id/txt_fatigue_summary"
+        android:id="@+id/txt_weekly_energy_summary"
         android:background="@color/textViewColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_fatigue_summary"
+        android:id="@+id/btn_weekly_energy_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mental_fatigue"
+        android:text="@string/weekly_energy_level"
+        android:background="@color/buttonColor"
+        style="@style/Widget.AppCompat.Button.Borderless" />
+
+    <TextView
+        android:id="@+id/txt_daily_fatigue_summary"
+        android:background="@color/textViewColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_daily_fatigue_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/daily_mental_fatigue"
+        android:background="@color/buttonColor"
+        style="@style/Widget.AppCompat.Button.Borderless" />
+
+    <TextView
+        android:id="@+id/txt_weekly_fatigue_summary"
+        android:background="@color/textViewColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_weekly_fatigue_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weekly_mental_fatigue"
         android:background="@color/buttonColor"
         style="@style/Widget.AppCompat.Button.Borderless" />
 

@@ -165,7 +165,7 @@ public class ActivitiesWeekly extends AppCompatActivity {
                                 entries.add(new PieEntry((numOfSleep * 100) / (float) totalActivity, "Sleep"));
 
                                 PieDataSet set = new PieDataSet(entries, "Activities");
-                                set.setColors(new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.CYAN, Color.GRAY});
+                                set.setColors(new int[]{Color.RED, Color.BLUE,Color.GREEN, Color.YELLOW, Color.CYAN, Color.GRAY});
                                 set.setSliceSpace(5f);
                                 PieData data = new PieData(set);
                                 data.setValueFormatter(new PercentFormatter());

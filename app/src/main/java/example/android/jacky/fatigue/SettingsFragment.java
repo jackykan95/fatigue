@@ -2,6 +2,7 @@ package example.android.jacky.fatigue;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,11 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Jacky on 11/01/2017.
@@ -22,6 +27,12 @@ public class SettingsFragment extends Fragment {
     private Button applyButton;
 
     private FirebaseDatabase database;
+
+    private DatabaseReference fatigueRef , energyRef;
+
+    private MainActivity mainActivity;
+
+    private String TAG = "Settings";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,16 +78,82 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        mainActivity = (MainActivity) getActivity();
+
+        database = FirebaseDatabase.getInstance();
+
+        energyRef = database.getReference("energy_prompt_frequency");
+
+        energyRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Log.d(TAG,"onDataChange for energyRef");
+
+                // Get the value to update the UI
+                Integer delay = dataSnapshot.getValue(Integer.class);
+
+                if(delay == null){
+                    energyRef.setValue(mainActivity.getEnergyDelay());
+                }
+                else{
+                    mainActivity.setEnergyDelay(delay);
+                    energyPicker.setValue(delay/60000);
+                }
+
+                mainActivity.displayEnergyLevelDialog();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Energy frequency failed, log a message
+                Log.w(TAG, "loadEnergy:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
+        fatigueRef = database.getReference("fatigue_prompt_frequency");
+
+        fatigueRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Log.d(TAG,"onDataChange for fatigueRef");
+
+                // Get the value to update the UI
+                Integer delay = dataSnapshot.getValue(Integer.class);
+
+                if(delay == null){
+                    fatigueRef.setValue(mainActivity.getFatigueDelay());
+                }
+                else{
+                    mainActivity.setFatigueDelay(delay);
+                    fatiguePicker.setValue(delay/60000);
+                }
+
+                mainActivity.displayFatigueDialog();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Fatigue frequency failed, log a message
+                Log.w(TAG, "loadFatigue:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivity activity = (MainActivity) getActivity();
                 activity.setEnergyDelay(energyPicker.getValue()*60000);
+                energyRef.setValue(energyPicker.getValue()*60000);
                 activity.setFatigueDelay(fatiguePicker.getValue()*60000);
+                fatigueRef.setValue(fatiguePicker.getValue()*60000);
             }
         });
-
-        database = FirebaseDatabase.getInstance();
 
 
         return rootView;

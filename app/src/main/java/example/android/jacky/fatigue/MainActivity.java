@@ -2,7 +2,6 @@ package example.android.jacky.fatigue;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.app.Fragment;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,8 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.sonymobile.lifelog.LifeLog;
 
 import Adapter.TabsPagerAdapter;
@@ -32,9 +29,7 @@ public class MainActivity extends FragmentActivity implements
     private DialogFragment energyLevelFrag, fatigueFrag;
 
     // default to 1 minute
-    private int energyDelay = 60000 , fatigueDelay = 60000;
-
-    private GoogleApiClient mGoogleApiClient;
+    private int energyDelay = 5000 , fatigueDelay = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +76,7 @@ public class MainActivity extends FragmentActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+
 
     }
 
@@ -147,8 +143,8 @@ public class MainActivity extends FragmentActivity implements
 
 
 
-        displayEnergyLevelDialog();
-        displayFatigueDialog();
+//        displayEnergyLevelDialog();
+//        displayFatigueDialog();
     }
 
     @Override
@@ -203,6 +199,8 @@ public class MainActivity extends FragmentActivity implements
         fatigueDelay = delay;
     }
 
+    public int getEnergyDelay(){return energyDelay;}
 
+    public int getFatigueDelay(){return fatigueDelay;}
 
 }

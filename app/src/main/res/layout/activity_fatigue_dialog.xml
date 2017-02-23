@@ -8,17 +8,22 @@
 
     <TextView
         android:layout_marginTop="20dp"
-        android:text="Please answer what you think is applicable to you at this moment:"
+        android:text="What is your concentration like at the moment?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/txt_progress"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <SeekBar
         android:layout_marginTop="30dp"
-        android:id="@+id/energy_level_dialog_seekbar"
-        android:max="1"
+        android:id="@+id/fatigue_dialog_seekbar"
+        android:max="10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@android:style/Widget.Material.SeekBar.Discrete" />
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:paddingTop="3dp"
@@ -27,16 +32,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="@string/energetic"
+            android:text="@string/concentrate_two_things"
             android:id="@+id/textView2"
             android:layout_alignParentEnd="true"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true" />
 
         <TextView
-            android:text="@string/tired"
-            android:layout_width="70dp"
+            android:text="@string/not_concentrate"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
             android:layout_alignParentStart="true" />

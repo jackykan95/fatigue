@@ -67,7 +67,7 @@ public class DateHelper {
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
-        long millis = (System.currentTimeMillis() - c.getTimeInMillis());
+        long millis = c.getTimeInMillis();
 
         return millis;
     }
@@ -79,6 +79,18 @@ public class DateHelper {
         c.set(Calendar.SECOND, 59);
         c.set(Calendar.MILLISECOND, 999);
         long millis = c.getTimeInMillis();
+
+        return millis;
+    }
+
+    public long getWeekStartOfDayMillis(){
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DAY_OF_MONTH,-6);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        long millis =c.getTimeInMillis();
 
         return millis;
     }
