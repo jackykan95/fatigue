@@ -29,7 +29,11 @@ public class MainActivity extends FragmentActivity implements
     private DialogFragment energyLevelFrag, fatigueFrag;
 
     // default to 1 minute
-    private int energyDelay = 5000 , fatigueDelay = 3000;
+    private int energyDelay = 60000 , fatigueDelay = 60000;
+
+    private static String TAG = "MainActivity";
+
+    private boolean isMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +86,8 @@ public class MainActivity extends FragmentActivity implements
 
     public void displayEnergyLevelDialog(){
 
+        Log.d(TAG, "Displaying Energy Level Dialog");
+
         energyLevelRunnable = new Runnable() {
 
             @Override
@@ -90,12 +96,10 @@ public class MainActivity extends FragmentActivity implements
                 if(energyLevelFrag == null) {
                     energyLevelFrag = EnergyLevelDialog.newInstance();
                 }
-                else{
-                    if(energyLevelFrag.getDialog() == null) {
-                        energyLevelFrag = EnergyLevelDialog.newInstance();
-                        energyLevelFrag.setCancelable(false);
-                        energyLevelFrag.show(getSupportFragmentManager(), "dialog");
-                    }
+                if(energyLevelFrag.getDialog() == null && isMainActivity) {
+                    energyLevelFrag = EnergyLevelDialog.newInstance();
+                    energyLevelFrag.setCancelable(false);
+                    energyLevelFrag.show(getSupportFragmentManager(), "dialog");
                 }
 
             }
@@ -106,6 +110,8 @@ public class MainActivity extends FragmentActivity implements
 
     public void displayFatigueDialog(){
 
+        Log.d(TAG, "Displaying Fatigue Dialog");
+
         fatigueRunnable = new Runnable() {
 
             @Override
@@ -113,13 +119,13 @@ public class MainActivity extends FragmentActivity implements
 
                 if (fatigueFrag == null) {
                     fatigueFrag = FatigueDialog.newInstance();
-                } else {
-                    if (fatigueFrag.getDialog() == null) {
-                        fatigueFrag = FatigueDialog.newInstance();
-                        fatigueFrag.setCancelable(false);
-                        fatigueFrag.show(getSupportFragmentManager(), "dialog");
-                    }
                 }
+                if (fatigueFrag.getDialog() == null && isMainActivity) {
+                    fatigueFrag = FatigueDialog.newInstance();
+                    fatigueFrag.setCancelable(false);
+                    fatigueFrag.show(getSupportFragmentManager(), "dialog");
+                }
+
 
             }
         };
@@ -140,11 +146,6 @@ public class MainActivity extends FragmentActivity implements
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-
-
-
-//        displayEnergyLevelDialog();
-//        displayFatigueDialog();
     }
 
     @Override
@@ -167,6 +168,7 @@ public class MainActivity extends FragmentActivity implements
     @Override
     public void onPause(){
         super.onPause();
+        isMainActivity = false;
         if (handler != null) {
             handler.removeCallbacks(energyLevelRunnable);
             handler.removeCallbacks(fatigueRunnable);
@@ -185,6 +187,7 @@ public class MainActivity extends FragmentActivity implements
     @Override
     public void onResume(){
         super.onResume();
+        isMainActivity = true;
         if (handler != null) {
             displayEnergyLevelDialog();
             displayFatigueDialog();

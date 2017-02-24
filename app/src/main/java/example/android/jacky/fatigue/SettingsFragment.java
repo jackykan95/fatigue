@@ -34,6 +34,10 @@ public class SettingsFragment extends Fragment {
 
     private String TAG = "Settings";
 
+    private boolean displayEnergyStartup = true;
+
+    private boolean displayFatigueStartup = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -101,7 +105,11 @@ public class SettingsFragment extends Fragment {
                     energyPicker.setValue(delay/60000);
                 }
 
-                mainActivity.displayEnergyLevelDialog();
+                if (displayEnergyStartup) {
+                    Log.d(TAG, "Display Energy at startup");
+                    displayEnergyStartup = false;
+                    mainActivity.displayEnergyLevelDialog();
+                }
 
             }
 
@@ -132,7 +140,11 @@ public class SettingsFragment extends Fragment {
                     fatiguePicker.setValue(delay/60000);
                 }
 
-                mainActivity.displayFatigueDialog();
+                if (displayFatigueStartup) {
+                    Log.d(TAG, "Display Fatigue at startup");
+                    displayFatigueStartup = false;
+                    mainActivity.displayFatigueDialog();
+                }
 
             }
 

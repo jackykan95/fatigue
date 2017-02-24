@@ -42,13 +42,13 @@ public class FatigueFragment extends Fragment {
 
         TextView txt_weekly_fatigue = (TextView) rootView.findViewById(R.id.txt_weekly_fatigue_summary);
 
-        txt_daily_energy.setText("A daily summary of your energy level");
+        txt_daily_energy.setText("A daily summary of energy level");
 
-        txt_weekly_energy.setText("A weekly summary of your energy level");
+        txt_weekly_energy.setText("A weekly summary of energy level");
 
-        txt_daily_fatigue.setText("A daily summary of your mental fatigue");
+        txt_daily_fatigue.setText("A daily summary of mental fatigue");
 
-        txt_weekly_fatigue.setText("A weekly summary of your mental fatigue");
+        txt_weekly_fatigue.setText("A weekly summary of mental fatigue");
 
         btn_daily_energy.setOnClickListener(new View.OnClickListener() {
             @Override

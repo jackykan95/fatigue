@@ -156,12 +156,24 @@ public class ActivitiesDaily extends AppCompatActivity {
 
                                 int totalActivity = numOfApplication + numOfTransport + numOfPhysical + numOfSleep + numOfMusic + numOfCamera;
 
-                                entries.add(new PieEntry((numOfPhysical * 100) / (float) totalActivity, "Physical"));
-                                entries.add(new PieEntry((numOfTransport * 100) / (float) totalActivity, "Transport"));
-                                entries.add(new PieEntry((numOfApplication * 100) / (float) totalActivity, "Application"));
-                                entries.add(new PieEntry((numOfMusic * 100) / (float) totalActivity, "Music"));
-                                entries.add(new PieEntry((numOfCamera * 100) / (float) totalActivity, "Camera"));
-                                entries.add(new PieEntry((numOfSleep * 100) / (float) totalActivity, "Sleep"));
+                                if (numOfPhysical != 0) {
+                                    entries.add(new PieEntry((numOfPhysical * 100) / (float) totalActivity, "Physical"));
+                                }
+                                if (numOfTransport != 0) {
+                                    entries.add(new PieEntry((numOfTransport * 100) / (float) totalActivity, "Transport"));
+                                }
+                                if (numOfApplication != 0) {
+                                    entries.add(new PieEntry((numOfApplication * 100) / (float) totalActivity, "Application"));
+                                }
+                                if (numOfMusic != 0) {
+                                    entries.add(new PieEntry((numOfMusic * 100) / (float) totalActivity, "Music"));
+                                }
+                                if (numOfCamera != 0) {
+                                    entries.add(new PieEntry((numOfCamera * 100) / (float) totalActivity, "Camera"));
+                                }
+                                if (numOfSleep != 0) {
+                                    entries.add(new PieEntry((numOfSleep * 100) / (float) totalActivity, "Sleep"));
+                                }
 
                                 PieDataSet set = new PieDataSet(entries, "Activities");
                                 set.setColors(new int[]{Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN, Color.GRAY});

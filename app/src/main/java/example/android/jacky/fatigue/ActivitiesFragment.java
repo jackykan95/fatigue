@@ -55,38 +55,7 @@ public class ActivitiesFragment extends Fragment{
         return rootView;
     }
 
-//    @Override
-//    public void setUserVisibleHint(boolean hidden){
-//        if(hidden) {
-//            // do the Lifelog request here
-//            Log.d("ActivitiesFragment", "Activities is not in view");
-//            getLifeLogActivitiesData();
-//
-//        }
-//        else{
-//            Log.d("ActivitiesFragment", "Activities is currently in view");
-//        }
-//    }
 
-//    public void getLifeLogActivitiesData(){
-//
-//        final IsoDateHelper lifelogRequest = new IsoDateHelper();
-//
-//        LifeLog.checkAuthentication(ActivitiesFragment.this.getContext(), new LifeLog.OnAuthenticationChecked() {
-//            @Override
-//            public void onAuthChecked(boolean authenticated) {
-//                if (authenticated) {
-//
-//                    lifelogRequest.processLifeLogRequests(true);
-//
-//                }
-//                else {
-//                    //User is not authenticated. Make them login
-//                    LifeLog.doLogin(getActivity());
-//                }
-//            }
-//        });
-//    }
 
 
 

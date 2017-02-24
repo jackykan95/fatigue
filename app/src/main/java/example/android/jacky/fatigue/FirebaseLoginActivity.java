@@ -109,7 +109,7 @@ public class FirebaseLoginActivity extends FragmentActivity
                 firebaseAuthWithGoogle(account);
             } else {
                 // Google Sign In failed, update UI appropriately
-                // ...
+                Toast.makeText(this, "Cannot login via Google, please check if your network connection is established", Toast.LENGTH_SHORT).show();
             }
         }
     }
