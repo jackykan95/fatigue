@@ -35,6 +35,10 @@ public class MainActivity extends FragmentActivity implements
 
     private boolean isMainActivity;
 
+    private boolean displayEnergyStartup = true;
+
+    private boolean displayFatigueStartup = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +85,7 @@ public class MainActivity extends FragmentActivity implements
             }
         });
 
-
+        viewPager.setCurrentItem(1);
     }
 
     public void displayEnergyLevelDialog(){
@@ -104,7 +108,7 @@ public class MainActivity extends FragmentActivity implements
 
             }
         };
-
+        Log.d(TAG, "Energy Frequency : "+energyDelay);
         handler.postDelayed(energyLevelRunnable,energyDelay);
     }
 
@@ -129,7 +133,7 @@ public class MainActivity extends FragmentActivity implements
 
             }
         };
-
+        Log.d(TAG, "Fatigue Frequency : "+fatigueDelay);
         handler.postDelayed(fatigueRunnable,fatigueDelay);
 
     }
@@ -188,7 +192,7 @@ public class MainActivity extends FragmentActivity implements
     public void onResume(){
         super.onResume();
         isMainActivity = true;
-        if (handler != null) {
+        if (handler != null && !displayEnergyStartup && !displayFatigueStartup) {
             displayEnergyLevelDialog();
             displayFatigueDialog();
         }
@@ -196,10 +200,24 @@ public class MainActivity extends FragmentActivity implements
 
     public void setEnergyDelay(int delay){
         energyDelay = delay;
+
+        if (displayEnergyStartup) {
+            Log.d(TAG, "Display Energy at startup");
+            displayEnergyStartup = false;
+            //Log.d(TAG, "Energy Frequency : "+dialogFrequencyDAO.getEnergyFrequency());
+            displayEnergyLevelDialog();
+        }
     }
 
     public void setFatigueDelay(int delay){
         fatigueDelay = delay;
+
+        if (displayFatigueStartup) {
+            Log.d(TAG, "Display Fatigue at startup");
+            displayFatigueStartup = false;
+            //Log.d(TAG, "Fatigue Frequency : "+dialogFrequencyDAO.getFatigueFrequency());
+            displayFatigueDialog();
+        }
     }
 
     public int getEnergyDelay(){return energyDelay;}
